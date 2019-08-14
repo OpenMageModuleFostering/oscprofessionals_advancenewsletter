@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    JjDesign
+ * @package     JjDesign_AdvancedNewsletter
+ */
+-->
+<config>
+    <modules>
+        <Oscprofessionals_AdvancedNewsletter>
+            <version>1.0.0</version>
+        </Oscprofessionals_AdvancedNewsletter>
+    </modules>
+    <global>       
+        <helpers>
+            <oscpadvancednewsletter>
+                <class>Oscprofessionals_AdvancedNewsletter_Helper</class>
+            </oscpadvancednewsletter>
+        </helpers>	   
+    </global>
+	<frontend>
+        <routers>
+            <newsletter>
+                <args>
+                    <modules>
+                        <oscprofessionals_advancednewsletter before="Mage_Newsletter">Oscprofessionals_AdvancedNewsletter</oscprofessionals_advancednewsletter>
+                    </modules>
+                </args>
+            </newsletter>
+        </routers>
+		<layout>
+            <updates>
+                <advancednewsletter>
+                    <file>oscprofessionals/advancednewsletter.xml</file>
+                </advancednewsletter>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <advancednewsletter>
+            <subscription>
+                <cookies_timeout>2</cookies_timeout>
+            </subscription>
+        </advancednewsletter>
+    </default>
+</config>

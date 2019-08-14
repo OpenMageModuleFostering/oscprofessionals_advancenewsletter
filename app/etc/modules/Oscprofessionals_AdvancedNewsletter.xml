@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Oscprofessionals
+ * @package     Oscprofessionals_AdvancedNewsletter
+ * @author      Oscprofessionals Team <standard@oscprofessionals.com>
+ */
+-->
+<config>
+    <modules>
+        <Oscprofessionals_AdvancedNewsletter>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Oscprofessionals_AdvancedNewsletter>
+    </modules>
+</config>

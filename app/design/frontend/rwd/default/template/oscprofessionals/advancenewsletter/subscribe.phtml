@@ -1,0 +1,144 @@
+<?php
+/**
+ * @category    Oscprofessional
+ * @package     Oscprofessional_AdvancedNewsletter
+ * @author      Oscprofessionals Team <standard@oscprofessionals.com>
+ */
+?>
+<div class="newsletter-title">
+    <div class="news-title">
+        <h1><?php echo $this->__('New discoveries every week straight to your inbox.') ?></h1>
+    </div>
+    <div class="news-title-new">
+        <span><?php echo Mage::helper('oscpadvancednewsletter')->getPopupFormTitle(); ?></span>
+        <span><?php echo Mage::helper('oscpadvancednewsletter')->getPopupDescription(); ?><span>
+    </div>
+    <div class="close">
+        <a id="cancel-filters-btn" style="display: inline;"><?php echo $this->__('Close') ?></a>
+    </div>
+</div>
+<div class="form-subscribe-header">
+    <div class="news-bg">
+        <div id="newsletter-msg" style="display: none;">
+            <span id="newsletter-msg-txt"></span>
+            <div id="close-button">
+                <a id="cancel-filters-btn" class="button subart" style="display: block;"><?php echo $this->__('Close') ?></a>
+            </div>
+        </div>
+
+        <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail-popup">
+            <input type="hidden" name="ajaxAction" value="1" />
+            <label class="news-art-label"><?php echo $this->__('Receive updates on the latest additions and exclusive stories') ?></label>
+            <div class="form-subscribe">
+                <div id="inpbox" class="input-button">
+                    <div class="v-fix"><input name="email" type="text" id="newsletter" value="<?php echo $this->__('Enter your email address here') ?>" class="input-text required-entry validate-email" /></div>
+                    <button type="submit" class="button subart" title="<?php echo $this->__('Join Now') ?>"><span><span><?php echo $this->__('Join Now') ?></span></span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+
+    jQuery("#newsletter-validate-detail-popup .v-fix #newsletter").click(function() {
+        if (jQuery(this).val() == 'Enter your email address here')
+        {
+            jQuery(this).val('');
+        }
+    });
+
+    jQuery("#newsletter-validate-detail-popup .v-fix #newsletter").blur(function() {
+        if (jQuery(this).val() == '')
+        {
+            jQuery(this).val('Enter your email address here');
+        }
+    });
+
+    var newsletterSubscriberFormDetail = new Validation($('newsletter-validate-detail-popup'), {
+        onFormValidate: function(result, form) {
+            if (result) {
+                var newsletterSubscriberFormDetailAjax = new Ajax.Updater(
+                        {
+                        },
+                        "<?php echo $this->getFormActionUrl() ?>",
+                        {
+                            asynchronous: true,
+                            evalScripts: false,
+                            onComplete: function(request, json) {
+
+                                $('newsletter-validate-detail-popup').hide();
+                                $('newsletter-msg').show()
+                            },
+                            onSuccess: function(response) {
+                                var json = response.responseText.evalJSON();				
+                                if (json.success == 'true') {
+                                    $('newsletter-validate-detail-popup').hide();
+                                    $('close-button').show();
+                                    $('newsletter-msg-txt').update(json.msg);
+                                    $('newsletter-msg-txt').removeClassName('error-msg');
+                                    $('newsletter-msg-txt').addClassName('success-msg');
+                                    $('newsletter-msg').show();
+									closePopup()
+                                    $('newsletter-form-again').show();
+                                    $('newsletter-form-again').stopObserving();
+                                    $('newsletter-form-again').observe('click', function() {
+                                        $('newsletter-validate-detail-popup').reset();
+                                        $('newsletter-validate-detail-popup').show();
+                                        $('newsletter-msg').hide();
+                                    });									
+
+                                } else {
+                                    $('newsletter-validate-detail-popup').show();
+                                    $('newsletter-msg-txt').update(json.msg);
+                                    $('newsletter-msg-txt').addClassName('error-msg');
+                                    $('inpbox').addClassName('error-failed');
+                                    $('newsletter-msg-txt').removeClassName('success-msg');
+                                    $('newsletter-msg').show();
+                                    $('close-button').hide();
+                                    $('newsletter-form-again').hide();
+                                }
+                            },
+                            onLoading: function(request, json) {
+                            },
+                            parameters: $('newsletter-validate-detail-popup').serialize(this)
+                        }
+                );
+            } else {
+                jQuery('.validation-failed').each(function() {
+
+                    jQuery(this).parent().addClass('validation-failed-label');
+                    jQuery('.subscribe-content').addClass('validation-failed-div');
+                });
+            }
+        },
+        addClassNameToContainer: true
+    })
+</script>
+<script type="text/javascript">
+    //<![CDATA[
+
+    jQuery(document).ready(function() {
+        if (jQuery('a#link_button').length == 1) {
+            jQuery('a#link_button').fancybox({
+                'onStart': function() {
+                    jQuery("#fancybox-overlay").css({"position": "fixed"});
+                }
+            });
+            jQuery('#subscribe_popups').find('form').eq(0).submit(function() {
+                return false;
+            });
+            jQuery('a#link_button').click();
+        }
+    });
+
+    jQuery(document).on('click', '#cancel-filters-btn', function() {
+        jQuery.fancybox.close();
+    });
+
+	function closePopup() {
+		setTimeout(function(){
+			jQuery.fancybox.close();
+		}, 5000)
+	}
+
+</script> 

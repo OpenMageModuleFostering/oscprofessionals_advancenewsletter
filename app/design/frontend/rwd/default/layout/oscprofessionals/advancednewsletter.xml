@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category    Oscprofessionals
+ * @package     Oscprofessionals_AdvancedNewsletter
+ * @author      Oscprofessionals Team <standard@oscprofessionals.com>
+ */
+-->
+<layout>
+    <cms_index_index>
+        <label>Cms Home Page</label>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/oscprofessionals/advancednewsletter/jquery.fancybox-1.3.4.js</name>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/oscprofessionals/advancednewsletter/jquery.fancybox-1.3.4.css</stylesheet>
+            </action>
+            <action method="addJs">
+                <script>oscprofessionals/advancednewsletter/jquery-1.7.2.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>oscprofessionals/advancednewsletter/newsletter.js</script>
+            </action>
+        </reference>
+		<reference name="header">
+             <block type="core/template" name="header.newsletterpopup" as="header.newsletterpopup" template="oscprofessionals/advancenewsletter/popupwrapper.phtml"/>
+        </reference>
+    </cms_index_index>
+</layout>

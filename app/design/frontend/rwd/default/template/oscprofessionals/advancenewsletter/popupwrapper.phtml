@@ -1,0 +1,35 @@
+<?php
+/**
+ * @category    Oscprofessional
+ * @package     Oscprofessional_AdvancedNewsletter
+ * @author      Oscprofessionals Team <standard@oscprofessionals.com>
+ */
+?>
+<?php $_subscriberEnabled = Mage::helper('oscpadvancednewsletter')->isNewsletterPopUpEnable(); ?>
+<?php $_cookiesTimeout = Mage::helper('oscpadvancednewsletter')->getCookiesTimeOut(); ?>
+<?php if ($_subscriberEnabled == 1): ?>
+    <?php
+    $_cookiesValueInSecond = Mage::helper('oscpadvancednewsletter')->getCookieTimeInSeconds($_cookiesTimeout);
+    $_currentTime = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y"));
+
+    $_newspopupCookieTime = (isset($_COOKIE["NEWSPOPUP_TIMEOUT"]) ? $_COOKIE["NEWSPOPUP_TIMEOUT"] : 0);
+    $_timeDiff = $_currentTime - $_newspopupCookieTime;
+
+    if ($_newspopupCookieTime == '')
+        $_newspopupCookieTime = 0;
+    ?>
+    <?php /* For cookies */ ?>
+    <?php if ($_timeDiff > $_cookiesValueInSecond):?>
+        <a id="link_button" href="#subscribe_popups" class="linkblock" style="display:none"></a> 
+        <div style="display:none; border: 1px solid red;">
+            <div id="subscribe_popups">
+                <div class="one">
+                    <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('oscprofessionals/advancenewsletter/subscribe.phtml')->toHtml(); ?>
+
+                </div>
+            </div>
+        </div>  
+        <?php setcookie("NEWSPOPUP_TIMEOUT", $_currentTime, time() + $_cookiesValueInSecond); ?>
+    <?php endif ?>
+    <?php /* For cookies */ ?>
+<?php endif ?>
