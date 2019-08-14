@@ -8,17 +8,17 @@
 <config>
     <modules>
         <Oscprofessionals_AdvancedNewsletter>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </Oscprofessionals_AdvancedNewsletter>
     </modules>
-    <global>       
+    <global>
         <helpers>
             <oscpadvancednewsletter>
                 <class>Oscprofessionals_AdvancedNewsletter_Helper</class>
             </oscpadvancednewsletter>
         </helpers>	   
     </global>
-	<frontend>
+    <frontend>
         <routers>
             <newsletter>
                 <args>
@@ -28,7 +28,7 @@
                 </args>
             </newsletter>
         </routers>
-		<layout>
+        <layout>
             <updates>
                 <advancednewsletter>
                     <file>oscprofessionals/advancednewsletter.xml</file>

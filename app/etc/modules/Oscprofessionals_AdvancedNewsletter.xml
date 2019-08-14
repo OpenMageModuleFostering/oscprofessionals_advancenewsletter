@@ -11,6 +11,10 @@
         <Oscprofessionals_AdvancedNewsletter>
             <active>true</active>
             <codePool>community</codePool>
+            <priority>1</priority>
+            <depends>
+                <Mage_Newsletter/>
+            </depends>
         </Oscprofessionals_AdvancedNewsletter>
     </modules>
 </config>

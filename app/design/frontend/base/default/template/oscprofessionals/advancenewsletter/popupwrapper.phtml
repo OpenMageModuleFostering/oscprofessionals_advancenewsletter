@@ -13,6 +13,7 @@
     $_currentTime = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y"));
 
     $_newspopupCookieTime = (isset($_COOKIE["NEWSPOPUP_TIMEOUT"]) ? $_COOKIE["NEWSPOPUP_TIMEOUT"] : 0);
+    //$_newspopupCookieTime = $_COOKIE["NEWSPOPUP_TIMEOUT"];
     $_timeDiff = $_currentTime - $_newspopupCookieTime;
 
     if ($_newspopupCookieTime == '')
