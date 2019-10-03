@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/Oscprofessionals_AdvanceNewsletter",
+    "name": "openmage-module-fostering\/oscprofessionals_advancenewsletter",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL)",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Advance Newsletter Module attract those customers who are interested in your product and service.",
     "authors": [
