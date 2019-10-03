@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Oscprofessionals_AdvanceNewsletter",
+    "name": "OpenMageModuleFostering\/Oscprofessionals_AdvanceNewsletter",
     "type": "magento-module",
     "license": "Open-Software-License-(OSL)",
     "homepage": "",
     "description": "Advance Newsletter Module attract those customers who are interested in your product and service.",
     "authors": [
-    {
-        "name": "Satish Mantri",
-        "email": "satish@oscprofessionals.com"
-    }
-],
+        {
+            "name": "Satish Mantri",
+            "email": "satish@oscprofessionals.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
